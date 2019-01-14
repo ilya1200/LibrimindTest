@@ -1,0 +1,42 @@
+<div>
+  <table>
+    <tr>
+      <th scope="row">Name</th>
+      <td>{{company.name}}</td>
+    </tr>
+    
+    <tr>
+      <th scope="row">Created</th>
+      <td>{{company.created | date:'shortDate'}}</td>
+    </tr>
+    
+    <tr>
+      <th scope="row">Updated</th>
+      <td>{{company.updated | date:'shortDate'}}</td>
+    </tr>
+    
+    <tr>
+      <th scope="row">Childern</th>
+      <td>
+        <table *ngIf="!selectedChild">
+          <thead>
+      <th>Name</th>
+      <th>Created</th>
+      <th>Updated</th>
+      </thead>
+      
+      <tbody>
+        <tr *ngFor="let childCompany of company.children" (click)="showChild(childCompany)">
+          <td>{{childCompany.name}}</td>
+          <td>{{childCompany.created | date:'shortDate'}}</td>
+          <td>{{childCompany.updated | date:'shortDate'}}</td>
+        </tr>
+      </tbody>
+      </table>
+      <!--Inner table-->
+      
+     <app-company-detail *ngIf="selectedChild" [company]="selectedChild"></app-company-detail>
+      </td>
+    </tr>
+  </table><!--Outter table-->
+</div>

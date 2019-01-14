@@ -1,0 +1,9 @@
+
+<h2>Company List</h2>
+
+<ul >
+  <li *ngFor="let company of companies" (click)="showCompany(company)">{{company.name}}</li>
+
+</ul>
+
+<app-company-detail *ngIf="selectedCompany" [company]="selectedCompany"></app-company-detail>
